@@ -18,7 +18,26 @@ const getItem = function(title) {
     });
 }
 
-console.log(getAll());
-console.log(getItem("Titanic"));
+const addItem = (newmovie) => {
+    const oldLength = movies.length;
+    let found = getItem(newmovie.title);
+    if (!found) {
+        movies.push(newmovie);
+    }
+    return {added: oldLength !== movies.length, title: newmovie, total: movies.length };
+};
+
+const deleteItem = function(title) {
+    // retain array length for later comparison after array modification
+    const oldLength = movies.length;
+    let movies = movies.filter((item) => {
+        return item.title !== title;
+    });
+    // if old & new array lengths differ, item was deleted
+    return {deleted: oldLength !== movies.length, total: movies.length };
+}
+
+// console.log(deleteItem("Totoro"));
+// console.log(getItem("Titanic"));
 
 export {getAll, getItem};
