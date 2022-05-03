@@ -30,6 +30,7 @@ http.createServer(function(req, res){
     switch(url_parts[0]) {
         case '/':
             res.writeHead(200, {'Content-Type': 'text/plain'});
+            res.write(JSON.stringify(getAll()));
             res.end('Home page');
             break;
         case '/about':
@@ -38,7 +39,7 @@ http.createServer(function(req, res){
             break;
         case '/detail':
             res.writeHead(200, {'Content-Type': 'text/plain'});
-            res.end('Detail for ' + query["name"]);
+            res.end('Detail for ' + JSON.stringify(getItem(query["name"])));
             break;
         default:
             res.writeHead(404, {'Content-Type': 'text/plain'});
