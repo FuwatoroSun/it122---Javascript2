@@ -16,15 +16,16 @@ describe('test deep equality', () => {
     });
     
     // addItem
-    it('addItem returns correct movie', () => {
-        let result = addItem("Totoro");
+    it('addItem adds a new movie', () => {
+        let newmovie  = {title: "Totoro", year: "1997", director: "James Cameron", genre: "Romance"};
+        let result = addItem(newmovie);
         expect(result).to.deep.equal(
             {added: true, title: "Totoro", total: 6 }
         );
     });
     it('addItem fails with incorrect movie', () => {
         let result = addItem("Totoro");
-        expect(result).to.be.undefined;
+        expect(result.added).to.be.false;
     });
     
     // deleteItem
@@ -36,7 +37,7 @@ describe('test deep equality', () => {
     });
     it('deleteItem fails with incorrect movie', () => {
         let result = deleteItem("Titanic");
-        expect(result).to.be.undefined;
+        expect(result.deleted).to.be.false;
     });
 });
 

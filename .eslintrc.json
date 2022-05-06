@@ -10,9 +10,12 @@
         "sourceType": "module"
     },
     "rules": {
-        "no-unused-vars": "warn"
-        // "no-console": "warn"
-        // "prefer-arrow-callback": "warn",
-        // "no-var": "warn"
+        "no-unused-vars": "warn",
+        "no-console": "warn",
+        "prefer-arrow-callback": "warn",
+        "no-var": "warn"
     }
 }
+
+
+
