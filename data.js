@@ -19,10 +19,10 @@ const getItem = function(title) {
 const addItem = (newmovie) => {
     const oldLength = movies.length;
     let found = getItem(newmovie.title);
-    if (!found) {
+    if (newmovie.title && !found) {
         movies.push(newmovie);
     }
-    return {added: oldLength !== movies.length, title: newmovie, total: movies.length };
+    return {added: oldLength !== movies.length, title: newmovie.title, total: movies.length };
 };
 
 const deleteItem = function(title) {

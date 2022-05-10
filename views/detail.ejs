@@ -10,7 +10,8 @@
 <body>
     <p><a href="/">Home</a></p>
     <% if (result) { %>
-        <h2><%= title %> details</h2>
+        <!-- ifの引数でresultを定義しているから、resultの中のtitle, director, year, genreになる。result.をつける！ -->
+        <h2><%= result.title %> details</h2>
         <div class="container">
             <ul>
                 <li>Director: <%= result.director %></li>
@@ -19,6 +20,7 @@
             </ul>
         </div>
     <% } else { %>
+        <!-- ifの引数としてはresultを定義したけど、elseの中では定義してないからこっちはresult.titleではなくただtitle -->
         <h2><%= title %> not found</h2>
     <% } %>
 </body>
