@@ -30,7 +30,7 @@ const deleteItem = function(title) {
     movies = movies.filter((item) => {
         return item.title !== title;
     });
-    return {deleted: oldLength !== movies.length, total: movies.length };
+    return {deleted: oldLength !== movies.length, title: title, total: movies.length };
 }
 
 // console.log("original movies length: ",movies.length);

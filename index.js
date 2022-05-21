@@ -1,8 +1,3 @@
-import http from 'http';
-import fs from 'fs';
-import path from 'path';
-import { parse } from "querystring";
-import * as movie from "./data.js";
 import express from 'express';
 import { Movies } from "./Movies.js";
 import { title } from 'process';

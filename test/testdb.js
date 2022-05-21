@@ -22,8 +22,8 @@ Movies.findOne({"year": "1986"}).lean()
   .catch(err => next(err));
 
 // // insert or update a single record
-const newMovie = {"title": "La La Land", "year": "2016", "director": "Damien Chazelle", "genre": "Musical"}
-Movies.updateOne({'title':'Stand by Me'}, newMovie, {upsert:true}, (err, result) => {
+const newMovie = {"title": "Titanic", "year": "1997", "director": "James Cameron", "genre": "Romance"}
+Movies.updateOne({'title':'La La Land'}, newMovie, {upsert:true}, (err, result) => {
   if (err) return next(err);
   console.log(result);
   // other code here
