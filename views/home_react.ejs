@@ -1,0 +1,33 @@
+<html>
+<head>
+    <title>React App Demo</title>
+
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+
+<div id="root"></div>
+<script type="text/babel">
+
+    const movies = <%- movies %>;
+    console.log(movies);
+
+    // define other components
+    const NameList  = (props) => {
+        console.log('NameList props=', props);
+        return props.movies.map((title) =>  <li key={title}>{title}</li>);
+    }
+
+    const App = () => {
+      return <div><h2>Movies</h2><NameList movies={title} /></div>;
+    }
+
+    ReactDOM.render(<App />, document.getElementById('root'));
+</script>
+</body>
+</html>

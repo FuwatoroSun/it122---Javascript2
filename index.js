@@ -14,7 +14,8 @@ app.get('/', (req,res) => {
     Movies.find({}).lean()
         .then((movies) => {
         // respond to browser only after db query completes
-            res.render('home', { movies });
+            // res.render('home', { movies });
+            res.render('home_react', {movies: JSON.stringify(movies)});
         })
         .catch(err => next(err));
 });

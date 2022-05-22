@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <title>My Home Page</title>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        const title = movies.title;
+        const NameList  = (props) => {
+            console.log('NameList props=', props);
+            return props.movies.map((title) =>  <li key={title}>{title}</li>);
+        }
+
+        const Greeting = (props) => {
+            console.log('props= ', props);
+            return
+            <span>
+                <h1>Miho's Spring 2022 IT122 Page</h1>
+                <h2>Movies</h2>
+                <NameList movies={title} />
+            </span>;
+        }
+
+        const container = document.getElementById('root'); //idが必要
+        const root = ReactDOM.createRoot(container);
+        // root.render(<MyApp />);
+        root.render(<Greeting/>);
+
+    </script>
+</body>
+
+<script src="index.js"></script>
+</html>
