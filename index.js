@@ -15,7 +15,7 @@ app.get('/', (req,res) => {
         .then((movies) => {
         // respond to browser only after db query completes
             // res.render('home', { movies });
-            res.render('home_react', {movies: JSON.stringify(movies)});
+            res.render('home_react', {title: req.query.title, movies: JSON.stringify(movies)});
         })
         .catch(err => next(err));
 });
