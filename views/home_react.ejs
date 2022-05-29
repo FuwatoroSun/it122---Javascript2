@@ -9,6 +9,7 @@
 
     <!-- Don't use this in production: -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
@@ -36,27 +37,31 @@
     const Movies = (props) => {
         console.log(props);
         const listItems = props.data.map((item) => {
-            <li key={item._id} id={item._id} onClick={props.clickHandler}>
+            return <li key={item._id} id={item._id}><a href={`/detail?title=${item.title}`}>
                 {item.title}
-            </li>
+            </a></li>
         });
         console.log(listItems);
-        return <ul>{listItems}</ul>
+        return <div class="container"><ul>{listItems}</ul></div>
     }
 
-    // // define other components
-    // const NameList  = (props) => {
-    //     console.log('NameList props=', props);
-    //     return props.movies.map((title) =>  <li key={title}>{title}</li>);
-    //     // console.log('NameList props=', props);
-    //     // const listItems = props.movies.map((item) => {
-    //     //     <li key={title}>{title}</li>
-    //     // });
-    //     // return <ul>{listItems}</ul>
+    // const ItemDetail = (props) => {
+    //     return <div></div>
     // }
 
-    // const App = () => {
-    //   return <div><h2>Movies</h2><NameList /></div>;
+    // class App extends React.Component {
+    //     constructor(props) {
+    //         super(props);
+    //         this.state = {
+    //             Items: <%- movies %>
+    //             currentItem: {}
+    //         };
+    //         this.selectItem = this.selectItem.bind(this);
+    //         // this.handleChange = this.handleChange.bind(this);
+    //         // this.clearForm = this.clearForm.bind(this);
+    //         // this.saveItem = this.saveItem.bind(this);
+    //         // this.deleteItem = this.deleteItem.bind(this);
+    //     }
     // }
 
     ReactDOM.render(
