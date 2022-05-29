@@ -1,5 +1,7 @@
 <html>
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
     <title>React App Demo</title>
 
     <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
@@ -11,23 +13,57 @@
 
 <body>
 
+<h2>Home</h2>
+
+<hr>
+
+<h3>Movies</h3>
+
 <div id="root"></div>
 <script type="text/babel">
 
     const movies = <%- movies %>;
     console.log(movies);
 
-    // define other components
-    const NameList  = (props) => {
-        console.log('NameList props=', props);
-        return props.movies.map((title) =>  <li key={title}>{title}</li>);
+    const showDetail = (event) => {
+        // <a href={"/detail?title=" + item.title}>
+        console.log(event.target);
+        console.log(event.target.innerText);
+        console.log(event.target.id);
+        window.location.href = "/detail?title=" + event.target.innerText;
     }
 
-    const App = (title) => {
-      return <div><h2>Movies</h2><NameList movies={title} /></div>;
+    const Movies = (props) => {
+        console.log(props);
+        const listItems = props.data.map((item) => {
+            <li key={item._id} id={item._id} onClick={props.clickHandler}>
+                {item.title}
+            </li>
+        });
+        console.log(listItems);
+        return <ul>{listItems}</ul>
     }
 
-    ReactDOM.render(<App />, document.getElementById('root'));
+    // // define other components
+    // const NameList  = (props) => {
+    //     console.log('NameList props=', props);
+    //     return props.movies.map((title) =>  <li key={title}>{title}</li>);
+    //     // console.log('NameList props=', props);
+    //     // const listItems = props.movies.map((item) => {
+    //     //     <li key={title}>{title}</li>
+    //     // });
+    //     // return <ul>{listItems}</ul>
+    // }
+
+    // const App = () => {
+    //   return <div><h2>Movies</h2><NameList /></div>;
+    // }
+
+    ReactDOM.render(
+        // <App />, document.getElementById('root')
+        <div><Movies  data={movies} clickHandler={showDetail} /></div>,
+        document.getElementById('root')
+    );
 </script>
 </body>
 </html>

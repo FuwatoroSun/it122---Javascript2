@@ -16,7 +16,7 @@ app.get('/', (req,res) => {
     Movies.find({}).lean()
         .then((movies) => {
         // respond to browser only after db query completes
-            res.render('home', { movies });
+            res.render('home_react', {movies: JSON.stringify(movies)});
         })
         .catch(err => next(err));
 });
@@ -50,7 +50,6 @@ app.get('/api/movies/delete/:title', (req,res) => {
 });
 
 ////////////////////////////////////////////// added this week
-////////////////////////////////////////////// 404
 app.post('/api/movies/add', (req,res) => {
     const newmovie = {'title': req.body.title, 'year': req.body.year, 'director': req.body.director, 'genre': req.body.genre};
     Movies.updateOne({"title": req.body.title}, newmovie, {upsert: true}).lean()
