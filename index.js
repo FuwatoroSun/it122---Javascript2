@@ -26,7 +26,8 @@ app.get('/api/movies', (req,res) => {
     Movies.find({}).lean()
         .then((movies) => {
         // respond to browser only after db query completes
-            res.render('home', { movies });
+            // res.render('home', { movies });
+            res.send({json: movies});
         })
         .catch(err => next(err));
 });
@@ -35,7 +36,8 @@ app.get('/api/movies', (req,res) => {
 app.get('/api/movies/:title', (req,res) => {
     Movies.findOne({"title": req.params.title}).lean()
         .then((movies) => {
-            res.render('detail', { result: movies, title: req.params.title });
+            // res.render('detail', { result: movies, title: req.params.title });
+            res.send({ result: movies, title: req.params.title });
         })
         .catch(err => next(err));
 });
