@@ -26,6 +26,8 @@ app.get('/api/movies', (req,res) => {
     Movies.find({}).lean()
         .then((movies) => {
         // respond to browser only after db query completes
+            // uncorrect route
+            // for week6(return JSON data)
             // res.render('home', { movies });
             res.send({json: movies});
         })
@@ -36,7 +38,9 @@ app.get('/api/movies', (req,res) => {
 app.get('/api/movies/:title', (req,res) => {
     Movies.findOne({"title": req.params.title}).lean()
         .then((movies) => {
+            // uncorrect route
             // res.render('detail', { result: movies, title: req.params.title });
+            // for week6(return JSON data)
             res.send({ result: movies, title: req.params.title });
         })
         .catch(err => next(err));

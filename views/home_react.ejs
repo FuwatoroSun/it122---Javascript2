@@ -34,7 +34,7 @@
             </li>
         });
         console.log(listItems);
-        return <div class="container"><ul>{listItems}</ul></div>
+        return <div className="container"><ul>{listItems}</ul></div>
     }
 
     const ItemDetail = (props) => {
@@ -43,7 +43,8 @@
                 Title: <input type="text" name="title" onChange={props.onChange} value={props.item.title || ""} /><br/>
                 Year: <input type="text" name="year" onChange={props.onChange} value={props.item.year || ""} /><br/>
                 Director: <input type="text" name="title" onChange={props.onChange} value={props.item.director || ""} /><br/>
-                Genre: <input type="text" name="title" onChange={props.onChange} value={props.item.genre || ""} />
+                Genre: <input type="text" name="title" onChange={props.onChange} value={props.item.genre || ""} /><br/>
+                <button name="clear" onClick={props.clearField}>Clear</button>
             </form>
         </div>
     }
@@ -52,7 +53,7 @@
         constructor(props) {
             super(props);
             this.state = {
-                Items: <%- movies %>,
+                items: <%- movies %>,
                 currentItem: {}
             };
             // this.selectItem = this.selectItem.bind(this);
@@ -72,6 +73,10 @@
             console.log(event.target.value);
             newItem[event. target.name] = event.target.value;
             this.setState({currentItem: newItem})
+        }
+
+        clearField = () => {
+            this.setState({currentItem: {}})
         }
 
         render() {
