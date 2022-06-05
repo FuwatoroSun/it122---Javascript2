@@ -50,7 +50,8 @@ app.get('/api/movies/:title', (req,res) => {
 app.get('/api/movies/delete/:title', (req,res) => {
     Movies.remove({"title": req.params.title}).lean()
         .then((movies) => {
-            res.send(req.params.title + ' successfully deleted!');
+            // res.send(req.params.title + ' successfully deleted!');
+            res.json({"deleted": movies});
         })
         .catch(err => next(err));
 });
@@ -60,7 +61,8 @@ app.post('/api/movies/add', (req,res) => {
     const newmovie = {'title': req.body.title, 'year': req.body.year, 'director': req.body.director, 'genre': req.body.genre};
     Movies.updateOne({"title": req.body.title}, newmovie, {upsert: true}).lean()
         .then((movies) => {
-            res.send(req.body.title + ' successfully added!');
+            // res.send(req.body.title + ' successfully added!');
+            res.json({"updated": movies});
         })
         .catch(err => next(err));
 });
